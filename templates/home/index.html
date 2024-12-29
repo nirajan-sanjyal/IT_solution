@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load custom_filters %}
+
 {% load static %}
 
 {% block content %}
@@ -169,95 +171,58 @@
       </div>
     </div>
   </div>
+  
   <div class="container">
     <div class="business-growth__bottom">
       <div class="row">
+        {% for service in business_services %}
         <div
           class="col-xl-4 col-lg-4 wow fadeInLeft"
           data-wow-delay="100ms"
         >
           <!--Business Growth Single-->
+
           <div class="business-growth__single">
+
             <div class="business-growth__img">
               <img
-                src="{% static 'assets/images/resources/business-growth-img-1.jpg'%}"
+                src="{{ service.image.url }}"
                 alt=""
               />
             </div>
-            <div class="business-growth__content">
+           <div class="business-growth__content">
               <h4 class="business-growth__title">
                 <a href="services.html"
-                  >Perfect Solution that your Business Demands</a
+              >{{ service.tilte }}</a
                 >
               </h4>
               <p class="business-growth__text">
-                Lorem ipsum dolor amet, consectetur notted adip sicing
-                elit text.
+                {{ service.description }}
               </p>
-            </div>
+            </div> 
           </div>
+
         </div>
+        {% endfor %}
         <div
-          class="col-xl-4 col-lg-4 wow fadeInUp"
-          data-wow-delay="200ms"
+        class="col-xl-4 col-lg-4 wow fadeInUp"
+        data-wow-delay="200ms"
         >
-          <!--Business Growth Single-->
-          <div class="business-growth__single">
-            <div class="business-growth__img">
-              <img
-                src="{% static 'assets/images/resources/business-growth-img-2.jpg' %}"
-                alt=""
-              />
-            </div>
-            <div class="business-growth__content">
-              <h4 class="business-growth__title">
-                <a href="about.html"
-                  >User generated content in real-time will have</a
-                >
-              </h4>
-              <p class="business-growth__text">
-                Lorem ipsum dolor amet, consectetur notted adip sicing
-                elit text.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div
-          class="col-xl-4 col-lg-4 wow fadeInRight"
-          data-wow-delay="300ms"
-        >
-          <!--Business Growth Single-->
-          <div class="business-growth__single">
-            <div class="business-growth__img">
-              <img
-                src="{% static 'assets/images/resources/business-growth-img-3.jpg' %}"
-                alt=""
-              />
-            </div>
-            <div class="business-growth__content">
-              <h4 class="business-growth__title">
-                <a href="about.html"
-                  >Capitalize on low hanging fruit to identify a</a
-                >
-              </h4>
-              <p class="business-growth__text">
-                Lorem ipsum dolor amet, consectetur notted adip sicing
-                elit text.
-              </p>
-            </div>
-          </div>
-        </div>
+        
+        
       </div>
     </div>
-    <div class="business-growth__find">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="business-growth__find-inner">
-            <p>
-              IT services built specifically for your business.
-              <a href="services.html">Find Your Solution</a>
-            </p>
-          </div>
+  </div>
+  <div class="business-growth__find">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="business-growth__find-inner">
+          <p>
+            {IT services built specifically for your business.}
+            <a href="services.html">Find Your Solution</a>
+          </p>
+        </div>
+    
         </div>
       </div>
     </div>
@@ -279,7 +244,7 @@
           <div class="welcome-one__img-box">
             <div class="welcome-one__img">
               <img
-                src="{% static 'assets/images/resources/welcome-one-img-1.jpg' %}"
+                src="{% static 'assets/images/resources/a1.webp' %}"
                 alt=""
               />
             </div>
@@ -314,8 +279,8 @@
           <div class="welcome-one__funded">
             <div class="welcome-one__funded-img">
               <img
-                src="{% static 'assets/images/resources/welcome-one-funded-img.jpg'%}"
-                alt=""
+                src="{% static 'assets/images/resources/a2.png'%}"
+                alt="" style="width:100%; height:100px;"
               />
             </div>
             <div class="welcome-one__funded-content">
@@ -391,7 +356,7 @@
             </div>
             <div class="help__box-one-img">
               <img
-                src="{% static 'assets/images/resources/help-box-one-img-1.jpg'%}"
+                src="{% static 'assets/images/resources/a4.webp'%}"
                 alt=""
               />
             </div>
@@ -460,9 +425,12 @@
     </div>
     <div class="project-two__carousel owl-theme owl-carousel">
       <!--Project One Single-->
+
+      {% for project in explore_project %}
+
       <div class="project-one__single">
         <div class="project-one__img">
-          <img src="{% static 'assets/images/resources/project-2-1.jpg'%}" alt="" />
+          <img src="{{ project.image.url }}" alt="" />
         </div>
         <div class="project-one__content">
           <p class="project-one__tagline">Cloud Services</p>
@@ -476,142 +444,8 @@
           </div>
         </div>
       </div>
-      <!--Project One Single-->
-      <div class="project-one__single">
-        <div class="project-one__img">
-          <img src="{% static 'assets/images/resources/project-2-2.jpg'%}" alt="" />
-        </div>
-        <div class="project-one__content">
-          <p class="project-one__tagline">Cloud Services</p>
-          <h2 class="project-one__title">
-            <a href="project-details.html">Smart Visions</a>
-          </h2>
-          <div class="project-one__arrow">
-            <a href="project-details.html"
-              ><span class="icon-right-arrow"></span
-            ></a>
-          </div>
-        </div>
-      </div>
-      <!--Project One Single-->
-      <div class="project-one__single">
-        <div class="project-one__img">
-          <img src="{% static 'assets/images/resources/project-2-3.jpg'%}" alt="" />
-        </div>
-        <div class="project-one__content">
-          <p class="project-one__tagline">Cloud Services</p>
-          <h2 class="project-one__title">
-            <a href="project-details.html">Smart Visions</a>
-          </h2>
-          <div class="project-one__arrow">
-            <a href="project-details.html"
-              ><span class="icon-right-arrow"></span
-            ></a>
-          </div>
-        </div>
-      </div>
-      <!--Project One Single-->
-      <div class="project-one__single">
-        <div class="project-one__img">
-          <img src="{% static 'assets/images/resources/project-2-4.jpg'%}" alt="" />
-        </div>
-        <div class="project-one__content">
-          <p class="project-one__tagline">Cloud Services</p>
-          <h2 class="project-one__title">
-            <a href="project-details.html">Smart Visions</a>
-          </h2>
-          <div class="project-one__arrow">
-            <a href="project-details.html"
-              ><span class="icon-right-arrow"></span
-            ></a>
-          </div>
-        </div>
-      </div>
-      <!--Project One Single-->
-      <div class="project-one__single">
-        <div class="project-one__img">
-          <img src="{% static 'assets/images/resources/project-2-1.jpg'%}" alt="" />
-        </div>
-        <div class="project-one__content">
-          <p class="project-one__tagline">Cloud Services</p>
-          <h2 class="project-one__title">
-            <a href="project-details.html">Smart Visions</a>
-          </h2>
-          <div class="project-one__arrow">
-            <a href="project-details.html"
-              ><span class="icon-right-arrow"></span
-            ></a>
-          </div>
-        </div>
-      </div>
-      <!--Project One Single-->
-      <div class="project-one__single">
-        <div class="project-one__img">
-          <img src="{% static 'assets/images/resources/project-2-2.jpg'%}" alt="" />
-        </div>
-        <div class="project-one__content">
-          <p class="project-one__tagline">Cloud Services</p>
-          <h2 class="project-one__title">
-            <a href="project-details.html">Smart Visions</a>
-          </h2>
-          <div class="project-one__arrow">
-            <a href="project-details.html"
-              ><span class="icon-right-arrow"></span
-            ></a>
-          </div>
-        </div>
-      </div>
-      <!--Project One Single-->
-      <div class="project-one__single">
-        <div class="project-one__img">
-          <img src="{% static 'assets/images/resources/project-2-3.jpg'%}" alt="" />
-        </div>
-        <div class="project-one__content">
-          <p class="project-one__tagline">Cloud Services</p>
-          <h2 class="project-one__title">
-            <a href="project-details.html">Smart Visions</a>
-          </h2>
-          <div class="project-one__arrow">
-            <a href="project-details.html"
-              ><span class="icon-right-arrow"></span
-            ></a>
-          </div>
-        </div>
-      </div>
-      <!--Project One Single-->
-      <div class="project-one__single">
-        <div class="project-one__img">
-          <img src="{% static 'assets/images/resources/project-2-4.jpg'%}" alt="" />
-        </div>
-        <div class="project-one__content">
-          <p class="project-one__tagline">Cloud Services</p>
-          <h2 class="project-one__title">
-            <a href="project-details.html">Smart Visions</a>
-          </h2>
-          <div class="project-one__arrow">
-            <a href="project-details.html"
-              ><span class="icon-right-arrow"></span
-            ></a>
-          </div>
-        </div>
-      </div>
-      <!--Project One Single-->
-      <div class="project-one__single">
-        <div class="project-one__img">
-          <img src="{% static 'assets/images/resources/project-2-1.jpg'%}" alt="" />
-        </div>
-        <div class="project-one__content">
-          <p class="project-one__tagline">Cloud Services</p>
-          <h2 class="project-one__title">
-            <a href="project-details.html">Smart Visions</a>
-          </h2>
-          <div class="project-one__arrow">
-            <a href="project-details.html"
-              ><span class="icon-right-arrow"></span
-            ></a>
-          </div>
-        </div>
-      </div>
+     {% endfor %}
+
     </div>
   </div>
 </section>
@@ -651,46 +485,15 @@
               }}'
       >
         <div class="swiper-wrapper">
+        
+          {% for logo in logos %}
+
           <div class="swiper-slide">
-            <img src="{% static 'assets/images/brand/brand-2-1.png'%}" alt="" />
+            <img src="{{ logo.logo.url }}" alt="" style="width:100%; height:150px;" />
           </div>
-          <!-- /.swiper-slide -->
-          <div class="swiper-slide">
-            <img src="{% static 'assets/images/brand/brand-2-2.png'%}" alt="" />
-          </div>
-          <!-- /.swiper-slide -->
-          <div class="swiper-slide">
-            <img src="{% static 'assets/images/brand/brand-2-3.png'%}" alt="" />
-          </div>
-          <!-- /.swiper-slide -->
-          <div class="swiper-slide">
-            <img src="{% static 'assets/images/brand/brand-2-4.png'%}" alt="" />
-          </div>
-          <!-- /.swiper-slide -->
-          <div class="swiper-slide">
-            <img src="{% static 'assets/images/brand/brand-2-5.png'%}" alt="" />
-          </div>
-          <!-- /.swiper-slide -->
-          <div class="swiper-slide">
-            <img src="{% static 'assets/images/brand/brand-2-1.png'%}" alt="" />
-          </div>
-          <!-- /.swiper-slide -->
-          <div class="swiper-slide">
-            <img src="{% static 'assets/images/brand/brand-2-2.png'%}" alt="" />
-          </div>
-          <!-- /.swiper-slide -->
-          <div class="swiper-slide">
-            <img src="{% static 'assets/images/brand/brand-2-3.png'%}" alt="" />
-          </div>
-          <!-- /.swiper-slide -->
-          <div class="swiper-slide">
-            <img src="{% static 'assets/images/brand/brand-2-4.png'%}" alt="" />
-          </div>
-          <!-- /.swiper-slide -->
-          <div class="swiper-slide">
-            <img src="{% static 'assets/images/brand/brand-2-5.png'%}" alt="" />
-          </div>
-          <!-- /.swiper-slide -->
+         
+          {% endfor %}
+
         </div>
       </div>
     </div>
@@ -814,7 +617,7 @@
 <!--Industries We Serve End-->
 
  <!--Team One Start-->
- <section class="team-one">
+<section class="team-one">
   <div class="team-one__container">
     <div class="container">
       <div class="section-title text-center">
@@ -822,6 +625,7 @@
         <h2 class="section-title__title">Meet the Experts</h2>
       </div>
       <div class="row">
+        {% for exports in meet_exports %}
         <div class="col-xl-3 col-lg-6 col-md-6">
           <!--Team One Single-->
           <div
@@ -830,86 +634,31 @@
             data-wow-duration="1000ms"
           >
             <div class="team-one__img">
-              <img src="{% static 'assets/images/team/team-one-img-1.jpg'%}" alt="" />
+              <img src="{{ exports.image.url }}" alt="{{ exports.name }}" style="width:300px; height:300px;" />
               <div class="team-one__social">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+                {% if exports.twitter %}
+                  <a href="{{ exports.twitter }}"><i class="fab fa-twitter"></i></a>
+                {% endif %}
+                {% if exports.facebook %}
+                  <a href="{{ exports.facebook }}"><i class="fab fa-facebook"></i></a>
+                {% endif %}
+                {% if exports.insta %}
+                  <a href="{{ exports.insta }}"><i class="fab fa-instagram"></i></a>
+                {% endif %}
               </div>
             </div>
             <div class="team-one__content">
-              <h3 class="team-one__name">Kevin Martin</h3>
-              <p class="team-one__title">IT Expert</p>
+              <h3 class="team-one__name">{{ exports.name }}</h3>
+              <p class="team-one__title">{{ exports.postition }}</p>
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-lg-6 col-md-6">
-          <!--Team One Single-->
-          <div
-            class="team-one__single wow fadeInLeft"
-            data-wow-delay="100ms"
-            data-wow-duration="1000ms"
-          >
-            <div class="team-one__img">
-              <img src="{% static 'assets/images/team/team-one-img-2.jpg'%}" alt="" />
-              <div class="team-one__social">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-            <div class="team-one__content">
-              <h3 class="team-one__name">Jessica Brown</h3>
-              <p class="team-one__title">IT Expert</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-md-6">
-          <!--Team One Single-->
-          <div
-            class="team-one__single wow fadeInRight"
-            data-wow-delay="0ms"
-            data-wow-duration="1000ms"
-          >
-            <div class="team-one__img">
-              <img src="{% static 'assets/images/team/team-one-img-3.jpg'%}" alt="" />
-              <div class="team-one__social">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-            <div class="team-one__content">
-              <h3 class="team-one__name">Mike Hardson</h3>
-              <p class="team-one__title">IT Expert</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-md-6">
-          <!--Team One Single-->
-          <div
-            class="team-one__single wow fadeInRight"
-            data-wow-delay="100ms"
-            data-wow-duration="1000ms"
-          >
-            <div class="team-one__img">
-              <img src="{% static 'assets/images/team/team-one-img-4.jpg'%}" alt="" />
-              <div class="team-one__social">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-            <div class="team-one__content">
-              <h3 class="team-one__name">Christine Eve</h3>
-              <p class="team-one__title">IT Expert</p>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>
 </section>
+
 <!--Team One End-->
 
  <!--Why Choose Start-->
@@ -926,7 +675,7 @@
         <div class="why-choose__left">
           <div class="why-choose__img">
             <img
-              src="{% static 'assets/images/resources/why-choose-img-1.jpg'%}"
+              src="{% static 'assets/images/resources/a3.webp'%}"
               alt=""
             />
           </div>
@@ -975,10 +724,11 @@
 <!--Google Map Start-->
 <section class="google-map">
   <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4562.753041141002!2d-118.80123790098536!3d34.152323469614075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80e82469c2162619%3A0xba03efb7998eef6d!2sCostco+Wholesale!5e0!3m2!1sbn!2sbd!4v1562518641290!5m2!1sbn!2sbd"
-    class="google-map__one"
-    allowfullscreen
-  ></iframe>
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.348017568593!2d85.33426357616794!3d27.706539125525794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19c00254ec7d%3A0x4609319eb006932e!2sGaau%20besi%20logistics!5e0!3m2!1sne!2snp!4v1735126234877!5m2!1sne!2snp" 
+  allowfullscreen="" 
+  class="google-map__one"
+
+  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </section>
 <!--Google Map End-->
 
@@ -1004,19 +754,21 @@
       <div class="col-xl-8">
         <div class="news-two__right">
           <div class="news-two__carousel owl-theme owl-carousel">
-            <!--News Two Single-->
+            {% for news in latest_news %}
+
+            {{ news.image }}
+
             
-            <!--News Two Single-->
+          
             <div class="news-one__single">
               <div class="news-one__img">
-                <img src="{% static 'assets/images/blog/a3.jpg'%}" alt="" />
+                <img src="{{ news.image.url }}" alt="" />
                 <a href="news-details.html">
                   <span class="news-one__plus"></span>
                 </a>
                 <div class="news-one__date-box">
                   <p>
-                    20 <br />
-                    Aug
+                    {{ news.date }}
                   </p>
                 </div>
               </div>
@@ -1024,169 +776,37 @@
                 <ul class="list-unstyled news-one__meta">
                   <li>
                     <a href="news-details.html"
-                      ><i class="far fa-user-circle"></i> by admin</a
+                      ><i class="far fa-user-circle"></i> by {{ news.admin }}</a
                     >
                   </li>
                   <li>
                     <a href="news-details.html"
-                      ><i class="far fa-comments"></i> 2 Comments</a
+                      ><i class="far fa-comments"></i> {{ news.comments }} </a
                     >
                   </li>
                 </ul>
                 <h3 class="news-one__title">
                   <a href="news-details.html"
-                    >Bring to the table win-win survival strategies</a
+                    >{{ news.title }}</a
                   >
                 </h3>
+             
                 <p class="news-one__text">
-                  Lorem ipsum is simply free text used by copytyping
-                  refreshing.
+                  {{ news.content|richtext_truncatewords:10 }}
+
                 </p>
-                <div class="news-one__read-more">
-                  <a
-                    href="news-details.html"
-                    class="news-one__read-more-btn"
-                    >Read More</a
-                  >
-                </div>
+
+                    <div class="news-one__read-more">
+                        <a
+                            href="news-details.html"
+                            class="news-one__read-more-btn"
+                            >Read More</a
+                        >
+                    </div>
               </div>
             </div>
-            <!--News Two Single-->
-            <div class="news-one__single">
-              <div class="news-one__img">
-                <img src="{% static 'assets/images/blog/a2.jpg'%}" alt="" />
-                <a href="news-details.html">
-                  <span class="news-one__plus"></span>
-                </a>
-                <div class="news-one__date-box">
-                  <p>
-                    20 <br />
-                    Aug
-                  </p>
-                </div>
-              </div>
-              <div class="news-one__content">
-                <ul class="list-unstyled news-one__meta">
-                  <li>
-                    <a href="news-details.html"
-                      ><i class="far fa-user-circle"></i> by admin</a
-                    >
-                  </li>
-                  <li>
-                    <a href="news-details.html"
-                      ><i class="far fa-comments"></i> 2 Comments</a
-                    >
-                  </li>
-                </ul>
-                <h3 class="news-one__title">
-                  <a href="news-details.html"
-                    >Leverage agile frameworks to provide a</a
-                  >
-                </h3>
-                <p class="news-one__text">
-                  Lorem ipsum is simply free text used by copytyping
-                  refreshing.
-                </p>
-                <div class="news-one__read-more">
-                  <a
-                    href="news-details.html"
-                    class="news-one__read-more-btn"
-                    >Read More</a
-                  >
-                </div>
-              </div>
-            </div>
-            <!--News Two Single-->
-            <div class="news-one__single">
-              <div class="news-one__img">
-                <img src="{% static 'assets/images/blog/a4.jpg'%}" alt="" />
-                <a href="news-details.html">
-                  <span class="news-one__plus"></span>
-                </a>
-                <div class="news-one__date-box">
-                  <p>
-                    20 <br />
-                    Aug
-                  </p>
-                </div>
-              </div>
-              <div class="news-one__content">
-                <ul class="list-unstyled news-one__meta">
-                  <li>
-                    <a href="news-details.html"
-                      ><i class="far fa-user-circle"></i> by admin</a
-                    >
-                  </li>
-                  <li>
-                    <a href="news-details.html"
-                      ><i class="far fa-comments"></i> 2 Comments</a
-                    >
-                  </li>
-                </ul>
-                <h3 class="news-one__title">
-                  <a href="news-details.html"
-                    >What is Holding Back the IT Solution Industry?</a
-                  >
-                </h3>
-                <p class="news-one__text">
-                  Lorem ipsum is simply free text used by copytyping
-                  refreshing.
-                </p>
-                <div class="news-one__read-more">
-                  <a
-                    href="news-details.html"
-                    class="news-one__read-more-btn"
-                    >Read More</a
-                  >
-                </div>
-              </div>
-            </div>
-        
- <!--News Two Single-->
-            <div class="news-one__single">
-              <div class="news-one__img">
-                <img src="{% static 'assets/images/blog/a1.jpg'%}" alt="" />
-                <a href="news-details.html">
-                  <span class="news-one__plus"></span>
-                </a>
-                <div class="news-one__date-box">
-                  <p>
-                    20 <br />
-                    Aug
-                  </p>
-                </div>
-              </div>
-              <div class="news-one__content">
-                <ul class="list-unstyled news-one__meta">
-                  <li>
-                    <a href="news-details.html"
-                      ><i class="far fa-user-circle"></i> by admin</a
-                    >
-                  </li>
-                  <li>
-                    <a href="news-details.html"
-                      ><i class="far fa-comments"></i> 2 Comments</a
-                    >
-                  </li>
-                </ul>
-                <h3 class="news-one__title">
-                  <a href="news-details.html"
-                    >What is Holding Back the IT Solution Industry?</a
-                  >
-                </h3>
-                <p class="news-one__text">
-                  Lorem ipsum is simply free text used by copytyping
-                  refreshing.
-                </p>
-                <div class="news-one__read-more">
-                  <a
-                    href="news-details.html"
-                    class="news-one__read-more-btn"
-                    >Read More</a
-                  >
-                </div>
-              </div>
-            </div>
+            
+            {% endfor %}
           </div>
         </div>
       </div>

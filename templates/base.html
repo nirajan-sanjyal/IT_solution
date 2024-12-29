@@ -71,14 +71,14 @@
                       ></a>
                       <ul class="main-menu__list">
                         <li class="dropdown current">
-                          <a href="{% url 'home' %}">Home</a>
+                          <a href="{% url 'it_solution:home' %}">Home</a>
                           
                         </li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="{% url 'it_solution:about' %}">About</a></li>
                         <li class="dropdown">
                           <a href="#">Services</a>
                           <ul>
-                            <li><a href="services.html">Services</a></li>
+                            <li><a href="{% url 'it_solution:services' %}">Services</a></li>
                             <li><a href="managed-it.html">Managed It</a></li>
                             <li><a href="it-support.html">IT Support</a></li>
                             <li>
@@ -98,7 +98,7 @@
                         <li class="dropdown">
                           <a href="#">Projects</a>
                           <ul>
-                            <li><a href="project.html">Projects</a></li>
+                            <li><a href="{% url 'it_solution:project' %}">Projects</a></li>
                             <li>
                               <a href="project-details.html">Project Details</a>
                             </li>
@@ -107,11 +107,11 @@
                         <li class="dropdown">
                           <a href="#">News</a>
                           <ul>
-                            <li><a href="news.html">News</a></li>
+                            <li><a href="{% url 'it_solution:news' %}">News</a></li>
                             <li><a href="news-details.html">News Details</a></li>
                           </ul>
                         </li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="{% url 'it_solution:contact' %}">Contact</a></li>
                       </ul>
                     </div>
                   </div>
@@ -413,6 +413,8 @@
 
     <!-- template js -->
     <script src="{% static 'assets/js/izeetak.js' %}"></script>
+    {% block scripts %}
+    {%endblock scripts%}
 </body>
 
 </html>
