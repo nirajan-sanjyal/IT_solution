@@ -79,19 +79,16 @@
                           <a href="#">Services</a>
                           <ul>
                             <li><a href="{% url 'it_solution:services' %}">Services</a></li>
-                            <li><a href="managed-it.html">Managed It</a></li>
-                            <li><a href="it-support.html">IT Support</a></li>
+                           
                             <li>
-                              <a href="it-consultancy.html">IT Consultancy</a>
+                              <a href="{% url 'it_solution:it-consultancy' %}">IT Consultancy</a>
                             </li>
                             <li>
-                              <a href="cloud-computing.html">Cloud Computing</a>
+                              <a href="{% url "it_solution:cloudcomputing" %}">Cloud Computing</a>
                             </li>
+                           
                             <li>
-                              <a href="cyber-security.html">Cyber Security</a>
-                            </li>
-                            <li>
-                              <a href="custom-software.html">Custom Software</a>
+                              <a href="{% url "it_solution:custom-software" %}">Custom Software</a>
                             </li>
                           </ul>
                         </li>

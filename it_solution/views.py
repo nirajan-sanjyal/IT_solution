@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from django.utils.html import strip_tags
 from django.utils.text import Truncator
-from it_solution.models import BusinessGrowth, CostumerFeedbacks, MeetExports, LatestNews, Services, Technology , Project
+from it_solution.models import BusinessGrowth, CostumerFeedbacks, MeetExports, LatestNews, Message, Services, Technology , Project
 from django.db.models import Count
 from django.utils.safestring import mark_safe
 from django import template
@@ -60,11 +60,26 @@ def aboutview(request):
 
 
 def servicesview(request):
-    return render(request, "services.html")
+    business_services= Services.objects.all()
+
+    context = {
+        
+        "business_services": business_services
+    }
+    return render(request, "services.html",context)
 
 
 def projectview(request):
-    return render(request, "project.html")
+        explore_project= Project.objects.all()
+
+
+        context = {
+            
+            "explore_project": explore_project,
+            
+        }
+
+        return render(request, "project.html", context )
 
 
 def newsview(request):
@@ -72,4 +87,23 @@ def newsview(request):
 
 
 def contactview(request):
-    return render(request, "contact.html")
+        
+        message= Message.objects.all()
+        
+        context = {
+            
+            "message": message
+            
+        }
+        return render(request, "contact.html", context )
+
+
+
+def cloudcomputing(request):
+        return render(request, "cloud-computing.html")
+
+def itconsultancy(request):
+        return render(request, "it-consultancy.html")
+
+def customsoftware(request):
+        return render(request, "custom-software.html")
