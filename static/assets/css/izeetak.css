@@ -660,13 +660,14 @@ canvas {
     z-index: -1;
 }
 
-.main-menu .main-menu__list>li.current>a,
-.main-menu .main-menu__list>li:hover>a,
-.stricky-header .main-menu__list>li.current>a,
-.stricky-header .main-menu__list>li:hover>a {
+.main-menu .main-menu__list > li.current > a:not(.home),
+.main-menu .main-menu__list > li:hover > a,
+.stricky-header .main-menu__list > li.current > a:not(.home),
+.stricky-header .main-menu__list > li:hover > a {
     color: var(--thm-black);
     text-shadow: 0 0 1px currentColor;
 }
+
 
 .main-menu .main-menu__list>li.current>a::before,
 .main-menu .main-menu__list>li:hover>a::before,
