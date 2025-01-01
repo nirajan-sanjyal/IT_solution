@@ -70,45 +70,38 @@
                         ><i class="fa fa-bars"></i
                       ></a>
                       <ul class="main-menu__list">
-                        <li class="dropdown current">
+                        <li class="{% if request.path == "" %}current{% endif %}">
                           <a href="{% url 'it_solution:home' %}">Home</a>
-                          
                         </li>
-                        <li><a href="{% url 'it_solution:about' %}">About</a></li>
-                        <li class="dropdown">
+                        <li class="{% if request.path == '/about/' %}current{% endif %}">
+                          <a href="{% url 'it_solution:about' %}">About</a>
+                        </li>
+                        <li class="dropdown {% if 'services' in request.path %}current{% endif %}">
                           <a href="#">Services</a>
                           <ul>
-                            <li><a href="{% url 'it_solution:services' %}">Services</a></li>
-                           
-                            <li>
+                            <li class="{% if request.path == '/services/' %}current{% endif %}">
+                              <a href="{% url 'it_solution:services' %}">Services</a>
+                            </li>
+                            <li class="{% if request.path == '/it-consultancy/' %}current{% endif %}">
                               <a href="{% url 'it_solution:it-consultancy' %}">IT Consultancy</a>
                             </li>
-                            <li>
-                              <a href="{% url "it_solution:cloudcomputing" %}">Cloud Computing</a>
+                            <li class="{% if request.path == '/cloudcomputing/' %}current{% endif %}">
+                              <a href="{% url 'it_solution:cloudcomputing' %}">Cloud Computing</a>
                             </li>
-                           
-                            <li>
-                              <a href="{% url "it_solution:custom-software" %}">Custom Software</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li class="dropdown">
-                          <a href="#">Projects</a>
-                          <ul>
-                            <li><a href="{% url 'it_solution:project' %}">Projects</a></li>
-                            <li>
-                              <a href="project-details.html">Project Details</a>
+                            <li class="{% if request.path == '/custom-software/' %}current{% endif %}">
+                              <a href="{% url 'it_solution:custom-software' %}">Custom Software</a>
                             </li>
                           </ul>
                         </li>
-                        <li class="dropdown">
-                          <a href="#">News</a>
-                          <ul>
-                            <li><a href="{% url 'it_solution:news' %}">News</a></li>
-                            <li><a href="news-details.html">News Details</a></li>
-                          </ul>
+                        <li class="{% if request.path == '/projects/' %}current{% endif %}">
+                          <a href="{% url 'it_solution:project' %}">Projects</a>
                         </li>
-                        <li><a href="{% url 'it_solution:contact' %}">Contact</a></li>
+                        <li class="{% if request.path == '/news/' %}current{% endif %}">
+                          <a href="{% url 'it_solution:news' %}">News</a>
+                        </li>
+                        <li class="{% if request.path == '/contact/' %}current{% endif %}">
+                          <a href="{% url 'it_solution:contact' %}">Contact</a>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -120,18 +113,18 @@
                       <div class="main-menu-wrapper__call-number">
                         <p>Have any questions?</p>
                         <h5>
-                          <a href="tel:926668880000">Free: + 92 666 888 0000</a>
+                          <a href="tel:926668880000">Free: 9802266777</a>
                         </h5>
                       </div>
                     </div>
                     <div class="main-menu-wrapper__search-box-cart-box">
-                      <a
+                      {% comment %} <a
                         href="#"
                         class="main-menu-wrapper__search search-toggler icon-magnifying-glass"
-                      ></a>
+                      ></a> {% endcomment %}
                       <a
-                        href="contact.html"
-                        class="main-menu-wrapper__cart icon-avatar"
+                        href="{% url 'it_solution:admin-page' %}"
+                        class="fas fa-user-cog"
                       ></a>
                     </div>
                   </div>

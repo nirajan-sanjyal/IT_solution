@@ -756,14 +756,15 @@
           <div class="news-two__carousel owl-theme owl-carousel">
             {% for news in latest_news %}
 
-            {{ news.image }}
+
+            {{news.id}}
 
             
           
             <div class="news-one__single">
               <div class="news-one__img">
                 <img src="{{ news.image.url }}" alt="" />
-                <a href="news-details.html">
+                <a href="{% url 'it_solution:news-details' news.id %}">
                   <span class="news-one__plus"></span>
                 </a>
                 <div class="news-one__date-box">
@@ -775,18 +776,18 @@
               <div class="news-one__content">
                 <ul class="list-unstyled news-one__meta">
                   <li>
-                    <a href="news-details.html"
+                    <a href="{% url 'it_solution:news-details' news.id %}"
                       ><i class="far fa-user-circle"></i> by {{ news.admin }}</a
                     >
                   </li>
                   <li>
-                    <a href="news-details.html"
+                    <a href="{% url 'it_solution:news-details' news.id %}"
                       ><i class="far fa-comments"></i> {{ news.comments }} </a
                     >
                   </li>
                 </ul>
                 <h3 class="news-one__title">
-                  <a href="news-details.html"
+                  <a href="{% url 'it_solution:news-details' news.id %}"
                     >{{ news.title }}</a
                   >
                 </h3>
@@ -798,7 +799,7 @@
 
                     <div class="news-one__read-more">
                         <a
-                            href="news-details.html"
+                            href="{% url 'it_solution:news-details' news.id %}"
                             class="news-one__read-more-btn"
                             >Read More</a
                         >

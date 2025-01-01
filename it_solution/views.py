@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 from django.utils.html import strip_tags
 from django.utils.text import Truncator
-from it_solution.models import BusinessGrowth, CostumerFeedbacks, MeetExports, LatestNews, Message, Services, Technology , Project
+from it_solution.models import BusinessGrowth, Comment, CostumerFeedbacks, MeetExports, LatestNews, Message, Services, Technology , Project
 from django.db.models import Count
 from django.utils.safestring import mark_safe
 from django import template
@@ -83,7 +83,17 @@ def projectview(request):
 
 
 def newsview(request):
-    return render(request, "views.html")
+    latest_news = LatestNews.objects.annotate(comments=Count("news_comments"))
+    for news in latest_news:
+        plain_text = strip_tags(news.content)  # Remove HTML tags
+        news.preview = Truncator(plain_text).chars(200, truncate='...')  # Show 200 characters
+        news.content_length = len(plain_text)
+
+        context = {
+              "latest_news": latest_news,
+              
+        }
+    return render(request, "news.html", context )
 
 
 def contactview(request):
@@ -106,4 +116,30 @@ def itconsultancy(request):
         return render(request, "it-consultancy.html")
 
 def customsoftware(request):
+    
         return render(request, "custom-software.html")
+
+
+def newsdetailsview(request, pk):
+      data = get_object_or_404(LatestNews, pk=pk)
+      comments = Comment.objects.all()
+      context = {
+            'data': data,
+            'comment': comments
+      }
+
+     
+      
+      return render(request, "news-details.html", context)
+
+
+def projectdetailsview(request):
+      return render(request, "project-details.html")
+
+
+
+
+# for d
+
+def adminview(request):
+      return render(request,"admin/admin_base.html")

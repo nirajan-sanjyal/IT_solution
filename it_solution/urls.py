@@ -15,6 +15,12 @@ urlpatterns = [
     path("cloud-computing/", views.cloudcomputing, name="cloudcomputing"),
     path("it-consultancy/", views.itconsultancy, name="it-consultancy"),
     path("custom-software/", views.customsoftware, name="custom-software"),
+    path("news/<int:pk>/", views.newsdetailsview, name="news-details"),
+    path("productdetails/", views.projectdetailsview, name="product-details"),
+
+
+
+    path("admin-page/", views.adminview, name= "admin-page"),
     
     
     
