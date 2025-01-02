@@ -1,0 +1,31 @@
+{% extends "admin/admin_base.html" %} 
+{% block page_title%}Dashboard {%endblock page_title%} 
+{% block page_sub_title%} {%endblock page_sub_title%} 
+{% block admin_content%}
+
+<div class="row">
+  <div class="col-md-3 text-center">
+    <div class="card">
+      {% comment %} <img class="card-img-top" src="..." alt="Card image cap" /> {% endcomment %}
+      <div class="card-body">
+        <h5 class="card-title">News</h5>
+        <p class="card-text">
+          {{ news }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 text-center ">
+    <div class="card">
+      {% comment %} <img class="card-img-top" src="..." alt="Card image cap" /> {% endcomment %}
+      <div class="card-body">
+        <h5 class="card-title">Projects </h5>
+        <p class="card-text">
+          20
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock admin_content%}

@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 from django.views.generic import ListView
 from django.utils.html import strip_tags
 from django.utils.text import Truncator
+from it_solution.form import LatestNewsForm
 from it_solution.models import BusinessGrowth, Comment, CostumerFeedbacks, MeetExports, LatestNews, Message, Services, Technology , Project
 from django.db.models import Count
 from django.utils.safestring import mark_safe
@@ -142,4 +143,29 @@ def projectdetailsview(request):
 # for d
 
 def adminview(request):
-      return render(request,"admin/admin_base.html")
+      return render(request,"admin/dashboard.html")
+
+
+def addnewsview(request):
+      return render(request,"admin/add_news.html")
+
+
+def latest_news_view(request):
+    if request.method == 'POST':
+        form = LatestNewsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('add_news')  # Redirect to a page that lists all news articles
+    else:
+        form = LatestNewsForm()
+    return render(request, 'add_news.html', {'form': form})
+
+
+def newslistview(request):
+     return render(request, "admin/news_list.html")
+
+def addprojectview(request):
+     return render(request, " admin/add_project.html")
+
+def projectlistview(request):
+     return render(request, " admin/project_list.html")
