@@ -17,6 +17,8 @@ def number_less_than_100(number):
         return True
     
 
+    
+
 class LatestNews(models.Model):
     image= models.ImageField(upload_to='latestnews/')
     title= models.CharField(max_length=255)
@@ -54,12 +56,17 @@ class Technology(models.Model):
     logo= models.ImageField(upload_to='technology/')
 
 
+class Category(models.Model):
+    title= models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.title
     
 
 class Project(models.Model):
     image= models.ImageField(upload_to='project/')
     title= models.CharField(max_length=255)
-    category=models.CharField(max_length=255)
+    category=models.ForeignKey(Category,on_delete=models.CASCADE)
     description=RichTextField()
 
 
