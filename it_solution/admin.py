@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from it_solution.models import BusinessGrowth, Comment, CostumerFeedbacks, LatestNews, MeetExports, Project, Services, Technology
+from it_solution.models import BusinessGrowth, Category, Comment, CostumerFeedbacks, LatestNews, MeetExports, Project, Services, Technology
 
 # Register your models here.
 
@@ -12,4 +12,4 @@ admin.site.register(BusinessGrowth)
 admin.site.register(Comment)
 admin.site.register(Services)
 admin.site.register(CostumerFeedbacks)
-
+admin.site.register(Category)

@@ -3,7 +3,7 @@ from django.views.generic import ListView
 from django.utils.html import strip_tags
 from django.utils.text import Truncator
 from it_solution.form import LatestNewsForm
-from it_solution.models import BusinessGrowth, Comment, CostumerFeedbacks, MeetExports, LatestNews, Message, Services, Technology , Project
+from it_solution.models import BusinessGrowth, Category, Comment, CostumerFeedbacks, MeetExports, LatestNews, Message, Services, Technology , Project
 from django.db.models import Count
 from django.utils.safestring import mark_safe
 from django import template
@@ -165,7 +165,12 @@ def newslistview(request):
      return render(request, "admin/news_list.html")
 
 def addprojectview(request):
-     return render(request, " admin/add_project.html")
+     categories = Category.objects.all()
+     print('catego', categories)
+     context ={
+          'categories': categories
+     }
+     return render(request, "admin/add_project.html", context)
 
 def projectlistview(request):
-     return render(request, " admin/project_list.html")
+     return render(request, "admin/project_list.html")
