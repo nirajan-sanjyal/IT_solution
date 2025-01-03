@@ -24,11 +24,10 @@ urlpatterns = [
 
     path("admin-page/", views.adminview, name= "admin-page"),
     path("addnews/", views.addnewsview, name="addnews"),
-    path('create/', views.latest_news_view, name='news_create'),
-
     path("newslist/", views.newslistview, name= "newslist"),
     path("addproject/", views.addprojectview, name= "addproject"),
     path("projectlist/", views.projectlistview, name= "projectlist"),
+    path("editproject/", views.editview, name= "editproject"),
     
     
     
