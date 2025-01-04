@@ -1,0 +1,39 @@
+{% extends "admin/admin_base.html" %} 
+{% load custom_filters %}
+{% block page_title%}Delete Projects{%endblock page_title%} 
+{% block page_sub_title%}{%endblock page_sub_title%} 
+{% block admin_content%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Project</title>
+    <script>
+        function confirmDelete(projectName) {
+            if (confirm(`Are you sure you want to delete the project "${projectName}"? This action cannot be undone.`)) {
+                document.getElementById("delete-form").submit();
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Delete Project</h1>
+    <p>Are you sure you want to delete the project "<strong>{{ project.name }}</strong>"?</p>
+
+    <!-- Delete confirmation button -->
+    <button onclick="confirmDelete('{{ project.name }}')">Confirm Delete</button>
+
+    <!-- Hidden form to send the delete request -->
+    <form id="delete-form" method="post" action="{% url 'it_solution:delete_project' project.id %}">
+        {% csrf_token %}
+    </form>
+
+    <!-- Cancel button -->
+    <a href="{% url 'it_solution:project_list' %}">Cancel</a>
+</body>
+</html>
+
+
+{% endblock admin_content%}

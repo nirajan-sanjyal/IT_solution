@@ -7,6 +7,7 @@ from it_solution.models import BusinessGrowth, Category, Comment, CostumerFeedba
 from django.db.models import Count
 from django.utils.safestring import mark_safe
 from django import template
+from django.contrib import messages
 
 register = template.Library()
 
@@ -56,7 +57,7 @@ def aboutview(request):
         
     }
 
-    return render(request, "about.html", context    )
+    return render(request, "about.html", context)
 
 
 
@@ -109,6 +110,13 @@ def contactview(request):
         return render(request, "contact.html", context )
 
 
+def commentview(request):
+     comments= Comment.objects.all()
+     context={
+          
+          "comment":  comments,
+     }
+     return render(request,"news-details.html",context )
 
 def cloudcomputing(request):
         return render(request, "cloud-computing.html")
@@ -135,6 +143,12 @@ def newsdetailsview(request, pk):
 
 
 def projectdetailsview(request):
+      flow = get_object_or_404(Project, pk=pk)
+      
+      context = {
+            'flow': flow,
+            # 'comment': comments
+      }
       return render(request, "project-details.html")
 
 
@@ -147,30 +161,115 @@ def adminview(request):
 
 
 def addnewsview(request):
-      return render(request,"admin/add_news.html")
-
-
-def latest_news_view(request):
     if request.method == 'POST':
-        form = LatestNewsForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('add_news')  # Redirect to a page that lists all news articles
-    else:
-        form = LatestNewsForm()
-    return render(request, 'add_news.html', {'form': form})
+        # Retrieve data from the form
+        title = request.POST.get('title')  # Matches the 'id' in HTML
+        description = request.POST.get('content')  # Corrected the field name
+        admin = request.POST.get('admin')  # Matches the 'id' in HTML
+        image = request.FILES.get('image')  # Matches the file input name
+        date = request.POST.get('date')  # Correctly retrieve the date field
+
+        # Debug print for data retrieval
+        print(title, description, admin, image, date)
+
+        # Save the news to the database
+        if title and description and admin and image and date:
+            LatestNews.objects.create(
+                title=title,
+                content=description,
+                admin=admin,
+                image=image,
+                date=date
+            )
+            
+            return redirect('it_solution:newslist')  # Redirect to a news list page or success page
+    
+    # For GET requests, show the form
+    return render(request, "admin/add_news.html")
+
+
 
 
 def newslistview(request):
-     return render(request, "admin/news_list.html")
+    newslist = LatestNews.objects.all()
+    context ={
+         
+           'newslist' : newslist
+     }
+    return render(request, "admin/news_list.html", context)
 
 def addprojectview(request):
-     categories = Category.objects.all()
-     print('catego', categories)
-     context ={
-          'categories': categories
-     }
-     return render(request, "admin/add_project.html", context)
+     
+    if request.method == 'POST':
+        # Retrieve data from the form
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        category_title = request.POST.get('category')
+        image = request.FILES.get('image')
+
+        print(title, description, category_title, image)
+
+        # Find the category object
+        category = Category.objects.filter(id=category_title).first()
+
+        # Save the project to the database
+        if category and title and description and image:
+            Project.objects.create(
+                image=image,
+                title=title,
+                description=description,
+                category=category
+            )
+
+        return redirect('it_solution:projectlist')  # Redirect to a project list page or success page
+    else:
+        categories = Category.objects.all()
+   
+        context ={
+            'categories': categories
+        }
+        return render(request, "admin/add_project.html", context)
 
 def projectlistview(request):
-     return render(request, "admin/project_list.html")
+     
+    projectlist = Project.objects.all()
+    context ={
+         
+           'projectlist' : projectlist
+     }
+    return render(request, "admin/project_list.html", context)
+
+
+
+
+def editprojectview(request):
+     return render(request, "admin/editproject.html")
+
+
+def deleteprojectview(request):
+     return render(request, "admin/deleteproject.html")
+
+def delete_project(request, project_id):
+    if request.method == "POST":
+        # Get the project to be deleted
+        project = get_object_or_404(Project, id=project_id)
+        project_name = project.name  # Save name for feedback
+        project.delete()  # Delete the project
+        messages.success(request, f"Project '{project_name}' has been successfully deleted.")
+        return redirect('it_solution:project_list')  # Replace with your project list view name
+
+    # If the request is not POST, show a confirmation page
+    project = get_object_or_404(Project, id=project_id)
+    return render(request, 'admin/delete.html', {'project': project})
+    
+
+
+
+
+
+def editnewsview(request):
+     return render(request, "admin/editnews.html")
+
+
+def deletenewsview(request):
+     return render(request, "admin/deletenews.html")

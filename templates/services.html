@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
 
-
+{% load custom_filters %}
 {% load static %}
 
 {% block content %}
@@ -71,7 +71,7 @@
                                     <span class="icon-pin"></span>
                                 </div>
                                 <div class="text">
-                                    <p>66 Road Broklyn Golden Street. New York</p>
+                                    <p>Ratopul-09. Kathmandu</p>
                                 </div>
                             </li>
                             <li>
@@ -79,7 +79,7 @@
                                     <span class="icon-email"></span>
                                 </div>
                                 <div class="text">
-                                    <p><a href="mailto:needhelp@company.com">needhelp@company.com</a></p>
+                                    <p><a href="mailto:needhelp@company.com">info@gaaubesi.com</a></p>
                                 </div>
                             </li>
                         </ul>
@@ -106,7 +106,7 @@
 
         <!--Page Header Start-->
   <section class="page-header">
-            <div class="page-header-bg" style="background-image: url({% static 'assets/images/backgrounds/page-header-bg.jpg'%})">
+            <div class="page-header-bg" style="background-image: url({% static 'assets/images/backgrounds/a5.jpg'%})">
             </div>
             <div class="page-header-bg-overly"></div>
             <div class="page-header-shape wow slideInRight" data-wow-delay="100ms" data-wow-duration="2500ms"
@@ -128,6 +128,9 @@
         <section class="services-two">
             <div class="container">
                 <div class="row">
+
+                    {% for services in business_services %}
+
                     <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-delay="100ms">
                         <!--Services One Single-->
                         <div class="services-one__single">
@@ -135,47 +138,15 @@
                                 <span class="icon-conversation"></span>
                             </div>
                             <h3 class="services-one__title">
-                                <a href="it-consultancy.html">IT Consulting <br> Services</a>
+                                <a href="it-consultancy.html">{{ services.tilte }} <br> Services</a>
                             </h3>
-                            <p class="services-one__text">There are many variations of passages of lorem im available,
-                                but majority suffered.</p>
+                            <p class="services-one__text">{{ services.description|richtext_truncatewords:10 }}</p>
                             <div class="services-one__arrow">
-                                <a href="it-consultancy.html"><span class="icon-right-arrow"></span></a>
+                                <a href="{% url 'it_solution:it-consultancy'%}"><span class="icon-right-arrow"></span></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
-                        <!--Services One Single-->
-                        <div class="services-one__single">
-                            <div class="services-one__icon">
-                                <span class="icon-app-development"></span>
-                            </div>
-                            <h3 class="services-one__title">
-                                <a href="custom-software.html">Software Dev <br> Services</a>
-                            </h3>
-                            <p class="services-one__text">There are many variations of passages of lorem im available,
-                                but majority suffered.</p>
-                            <div class="services-one__arrow">
-                                <a href="custom-software.html"><span class="icon-right-arrow"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 wow fadeInRight" data-wow-delay="100ms">
-                        <!--Services One Single-->
-                        <div class="services-one__single">
-                            <div class="services-one__icon">
-                                <span class="icon-cloud-storage"></span>
-                            </div>
-                            <h3 class="services-one__title">
-                                <a href="cloud-computing.html">Cloud Computing <br> Services</a>
-                            </h3>
-                            <p class="services-one__text">There are many variations of passages of lorem im available,
-                                but majority suffered.</p>
-                            <div class="services-one__arrow">
-                                <a href="cloud-computing.html"><span class="icon-right-arrow"></span></a>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
@@ -184,7 +155,7 @@
         <!--Video One Start-->
         <section class="video-one">
             <div class="video-one-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
-                style="background-image: url({% static 'assets/images/backgrounds/video-one-bg.jpg'%})"></div>
+                style="background-image: url({% static 'assets/images/backgrounds/t.html'%})"></div>
             <div class="video-one-bg-overly"></div>
             <div class="container">
                 <div class="row">
@@ -217,7 +188,7 @@
                                     <h3 class="help__box-one-title">Help Your Business Win and Grow!</h3>
                                 </div>
                                 <div class="help__box-one-img">
-                                    <img src="{% static 'assets/images/resources/help-box-one-img-1.jpg'%}" alt="">
+                                    <img src="{% static 'assets/images/resources/a6.webp'%}" alt="">
                                 </div>
                             </li>
                             <li class="help__single help__box-two wow fadeInLeft" data-wow-delay="300ms">
@@ -225,7 +196,7 @@
                                     <div class="help__box-two-icon">
                                         <span class="icon-learning"></span>
                                     </div>
-                                    <h3 class="help__box-two-title"><a href="managed-it.html">IT Management</a></h3>
+                                    <h3 class="help__box-two-title"><a href="{% url 'it_solution:it-consultancy' %}">IT Management</a></h3>
                                     <p class="help__box-two-text">Lorem ipsu dolor sit am adipi we help you ensure
                                         everyone</p>
                                 </div>
@@ -235,7 +206,7 @@
                                     <div class="help__box-two-icon">
                                         <span class="icon-verify"></span>
                                     </div>
-                                    <h3 class="help__box-two-title"><a href="cyber-security.html">Cyber Security</a>
+                                    <h3 class="help__box-two-title"><a href="{% url 'it_solution:custom-software' %}">Custom Software</a>
                                     </h3>
                                     <p class="help__box-two-text">Lorem ipsu dolor sit am adipi we help you ensure
                                         everyone</p>
@@ -246,7 +217,7 @@
                                     <div class="help__box-two-icon">
                                         <span class="icon-cloud"></span>
                                     </div>
-                                    <h3 class="help__box-two-title"><a href="cloud-computing.html">Cloud Computing</a>
+                                    <h3 class="help__box-two-title"><a href="{% url 'it_solution:cloudcomputing' %}">Cloud Computing</a>
                                     </h3>
                                     <p class="help__box-two-text">Lorem ipsu dolor sit am adipi we help you ensure
                                         everyone</p>
@@ -298,7 +269,7 @@
             <div class="business-growth__img">
               <img
                 src="{{ service.image.url }}"
-                alt=""
+                alt=""style="height:250px; width:100%;"
               />
             </div>
            <div class="business-growth__content">
@@ -308,7 +279,7 @@
                 >
               </h4>
               <p class="business-growth__text">
-                {{ service.description }}
+                {{ service.description|richtext_truncatewords:10 }}
               </p>
             </div> 
           </div>
