@@ -1,8 +1,24 @@
 {% extends "admin/admin_base.html" %} 
+{% load custom_filters %}
 {% block page_title%}News  {%endblock page_title%} 
 {% block page_sub_title%} News List {%endblock page_sub_title%} 
 {% block admin_content%}
 
-<h1> My bad </h1>
+<div class="row">
+    {% for news in newslist %}
+    <div class="col-md-3 ">
+        <div class="card">
+            <img src="{{news.image.url}}" class="card-img-top" alt="..." style= "height:250px; width:100%; ">
+            <div class="card-body">
+            <h5 class="card-title">{{news.title}}</h5>
+            <p class="card-text">{{ news.content|richtext_truncatewords:10 }}
+            </p>
+            <a href="{%url 'it_solution:editnews' %}" class="btn btn-primary">Edit</a>
+            <a href="{%url 'it_solution:deletenews' %}" class="btn btn-primary" style="background-color: red;" >Delete</a>
+            </div>
+        </div>
+    </div>
+        {% endfor %}
+</div>
 
 {% endblock admin_content%}

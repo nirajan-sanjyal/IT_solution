@@ -15,7 +15,7 @@
             <p class="card-text">{{ project.description|richtext_truncatewords:10 }}
             </p>
             <a href="{%url 'it_solution:editproject' %}" class="btn btn-primary">Edit</a>
-            <a href="#" class="btn btn-primary" style="background-color: red;" >Delete</a>
+            <a href="{%url 'it_solution:deleteproject' %}" class="btn btn-primary" style="background-color: red;" >Delete</a>
             </div>
         </div>
     </div>

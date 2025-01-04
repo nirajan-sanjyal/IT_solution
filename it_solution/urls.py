@@ -12,11 +12,12 @@ urlpatterns = [
     path("project/", views.projectview, name="project"),
     path("news/", views.newsview, name="news"),
     path("contact/", views.contactview, name="contact"),
+    path("comments/", views.commentview, name="comments"),
     path("cloud-computing/", views.cloudcomputing, name="cloudcomputing"),
     path("it-consultancy/", views.itconsultancy, name="it-consultancy"),
     path("custom-software/", views.customsoftware, name="custom-software"),
     path("news/<int:pk>/", views.newsdetailsview, name="news-details"),
-    path("productdetails/", views.projectdetailsview, name="product-details"),
+    path("product/<int:pk>/", views.projectdetailsview, name="product-details"),
 
 
 
@@ -27,8 +28,16 @@ urlpatterns = [
     path("newslist/", views.newslistview, name= "newslist"),
     path("addproject/", views.addprojectview, name= "addproject"),
     path("projectlist/", views.projectlistview, name= "projectlist"),
-    path("editproject/", views.editview, name= "editproject"),
+
+
+
+
+
+    path("editproject/", views.editprojectview, name= "editproject"),
+    path("deleteproject/", views.deleteprojectview, name="deleteproject"),
+    path('delete/<int:project_id>/', views.delete_project, name='delete_project'),
     
-    
+    path("editnews/", views.editnewsview, name= "editnews"),
+    path("deletenews/", views.deletenewsview, name="deletenews"),
     
 ]

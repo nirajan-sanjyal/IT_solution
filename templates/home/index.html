@@ -186,8 +186,8 @@
 
             <div class="business-growth__img">
               <img
-                src="{{ service.image.url }}"
-                alt=""
+                src="{{ service.image.url }} "
+                alt=""style= "height:250px; width:100%; "
               />
             </div>
            <div class="business-growth__content">
@@ -197,7 +197,7 @@
                 >
               </h4>
               <p class="business-growth__text">
-                {{ service.description }}
+                {{ service.description|richtext_truncatewords:10 }}
               </p>
             </div> 
           </div>
@@ -430,7 +430,7 @@
 
       <div class="project-one__single">
         <div class="project-one__img">
-          <img src="{{ project.image.url }}" alt="" />
+          <img src="{{ project.image.url }}" alt="" style= "height:250px; width:100%; "/>
         </div>
         <div class="project-one__content">
           <p class="project-one__tagline">Cloud Services</p>
@@ -763,7 +763,7 @@
           
             <div class="news-one__single">
               <div class="news-one__img">
-                <img src="{{ news.image.url }}" alt="" />
+                <img src="{{ news.image.url }}" alt=""style= "height:250px; width:100%; " />
                 <a href="{% url 'it_solution:news-details' news.id %}">
                   <span class="news-one__plus"></span>
                 </a>

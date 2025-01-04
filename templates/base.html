@@ -190,21 +190,22 @@
                     <ul
                       class="footer-widget__links-list list-unstyled clearfix"
                     >
-                      <li><a href="about.html">About</a></li>
-                      <li><a href="about.html">Leadership Team</a></li>
-                      <li><a href="news.html">IT Blog</a></li>
-                      <li><a href="project.html">Case Studies</a></li>
-                      <li><a href="contact.html">Locations</a></li>
+                      <li><a href={% url 'it_solution:home' %}>Home</a></li>
+                      <li><a href={% url 'it_solution:about' %}>Adout</a></li>
+                      <li><a href={% url 'it_solution:services' %}>Services</a></li>
+                      <li><a href={% url 'it_solution:project' %}>Project</a></li>
+                      <li><a href={% url 'it_solution:news' %}>News</a></li>
+                      <li><a href={% url 'it_solution:contact' %}>Contact</a></li>
                     </ul>
                     <ul
                       class="footer-widget__links-list footer-widget__links-list-two list-unstyled clearfix"
                     >
-                      <li><a href="managed-it.html">Managed IT</a></li>
-                      <li><a href="it-support.html">IT Support</a></li>
-                      <li><a href="it-consultancy.html">IT Consultancy</a></li>
-                      <li>
-                        <a href="cloud-computing.html">Cloud Computing</a>
-                      </li>
+                    
+                    <li><a href={% url 'it_solution:it-consultancy' %}>IT Consultancy</a></li>
+                    <li>
+                      <a href="{% url 'it_solution:cloudcomputing' %}">Cloud Computing</a>
+                    </li>
+                    <li><a href={% url 'it_solution:custom-software' %}>Costom Software</a></li>
                     </ul>
                   </div>
                 </div>
@@ -215,8 +216,8 @@
                   <div class="footer-widget__column footer-widget__contact">
                     <h3 class="footer-widget__title">Contact</h3>
                     <p class="footer-widget__contact-text">
-                      66 Road Broklyn Street, 600 <br />
-                      New York, USA
+                     Ratopul-09 <br />
+                      Kathmandu, Nepal
                     </p>
                     <ul class="list-unstyled footer-widget__contact-list">
                       <li>
@@ -226,7 +227,7 @@
                         <div class="text">
                           <p>
                             <a href="mailto:needhelp@company.com"
-                              >needhelp@company.com</a
+                              >info@gaaubesi.com</a
                             >
                           </p>
                         </div>
@@ -237,7 +238,7 @@
                         </div>
                         <div class="text">
                           <p>
-                            <a href="tel:926668880000">+ 92 666 888 0000</a>
+                            <a href="tel:926668880000">9802266777</a>
                           </p>
                         </div>
                       </li>
@@ -253,24 +254,24 @@
                     <p class="footer-widget__newsletter-text">
                       Subscribe to our newsletter for daily new and updates
                     </p>
-                    <form
-                      class="footer-widget__newsletter-form mc-form"
-                      data-url="https://xyz.us18.list-manage.com/subscribe/post?u=20e91746ef818cd941998c598&id=cc0ee8140e"
-                    >
-                      <div class="footer-widget__newsletter-input-box">
-                        <input
-                          type="email"
-                          placeholder="Email address"
-                          name="email"
-                        />
-                        <button
-                          type="submit"
-                          class="footer-widget__newsletter-btn"
-                        >
-                          Send
-                        </button>
-                      </div>
-                    </form>
+                      {% comment %} <form
+                        class="footer-widget__newsletter-form mc-form"
+                        data-url="https://xyz.us18.list-manage.com/subscribe/post?u=20e91746ef818cd941998c598&id=cc0ee8140e"
+                      >
+                        <div class="footer-widget__newsletter-input-box">
+                          <input
+                            type="email"
+                            placeholder="Email address"
+                            name="email"
+                          />
+                          <button
+                            type="submit"
+                            class="footer-widget__newsletter-btn"
+                          >
+                            Send
+                          </button>
+                        </div>
+                      </form> {% endcomment %}
                     <div class="mc-form__response"></div>
                     <!-- /.mc-form__response -->
                   </div>
@@ -291,13 +292,6 @@
                         ><!-- /.dynamic-year -->
                         by <a href="#">Layerdrops.com</a>
                       </p>
-                    </div>
-                    <div class="site-footer__bottom-right">
-                      <ul class="list-unstyled site-footer__bottom-menu">
-                        <li><a href="contact.html">Terms & Condition</a></li>
-                        <li><span>/</span></li>
-                        <li><a href="contact.html">Privacy Policy</a></li>
-                      </ul>
                     </div>
                   </div>
                 </div>

@@ -4,39 +4,54 @@
 {% block admin_content%}
 
 
-<form>
-    <div class="form-group row">
-        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Image</label>
-        <div class="col-sm-10">
-          <input type="file" class="form-control form-control-lg" id="image/png" placeholder="Upload the image">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Title</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control form-control-lg" id="title " placeholder="Enter the title">
-        </div>
-      </div>
-    <div class="form-group row">
-      <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Admin</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Enter the admin">
-      </div>
-    </div>
-    <div class="form-group row">
-        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Content</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Enter the content">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Date</label>
-        <div class="col-sm-10">
-          <input type="date" class="form-control form-control-lg" id="colFormLabelLg" placeholder="select the date ">
-        </div>
-      </div>
 
-      <button type="submit" class="btn btn-primary">Add News </button>
-  </form>
+<form method="POST" enctype="multipart/form-data" action="">
+    {% csrf_token %}
+
+    <h1 style="text-align:center;">Add News</h1>
+    
+    <!-- Image Field -->
+    <div class="form-group row">
+        <label for="image" class="col-sm-2 col-form-label col-form-label-lg">Image</label>
+        <div class="col-sm-10">
+            <input type="file" class="form-control form-control-lg" id="image" name="image" placeholder="Upload the image" required>
+        </div>
+    </div>
+    
+    <!-- Title Field -->
+    <div class="form-group row">
+        <label for="title" class="col-sm-2 col-form-label col-form-label-lg">Title</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="Enter the title" required>
+        </div>
+    </div>
+
+    <!-- Admin Field -->
+    <div class="form-group row">
+        <label for="admin" class="col-sm-2 col-form-label col-form-label-lg">Admin</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control form-control-lg" id="admin" name="admin" placeholder="Enter the admin" required>
+        </div>
+    </div>
+
+    <!-- Content Field -->
+    <div class="form-group row">
+        <label for="content" class="col-sm-2 col-form-label col-form-label-lg">Content</label>
+        <div class="col-sm-10">
+            <textarea class="form-control form-control-lg" id="content" name="content" placeholder="Enter the content" required></textarea>
+        </div>
+    </div>
+
+    <!-- Date Field -->
+    <div class="form-group row">
+        <label for="date" class="col-sm-2 col-form-label col-form-label-lg">Date</label>
+        <div class="col-sm-10">
+            <input type="date" class="form-control form-control-lg" id="date" name="date" required>
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Add News</button>
+</form>
 
 {% endblock admin_content%}
