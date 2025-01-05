@@ -242,25 +242,26 @@ def projectlistview(request):
 
 
 
-def editprojectview(request):
-     return render(request, "admin/editproject.html")
+def editprojectview(request, project_id):
+    project = get_object_or_404(Project, id= project_id)
+     
+     
+    context={
+        'project': project,
+        'categories':Category.objects.all()
+     }
+    return render(request, "admin/editproject.html",context)
 
 
-def deleteprojectview(request):
-     return render(request, "admin/deleteproject.html")
+
 
 def delete_project(request, project_id):
-    if request.method == "POST":
-        # Get the project to be deleted
-        project = get_object_or_404(Project, id=project_id)
-        project_name = project.name  # Save name for feedback
-        project.delete()  # Delete the project
-        messages.success(request, f"Project '{project_name}' has been successfully deleted.")
-        return redirect('it_solution:project_list')  # Replace with your project list view name
-
-    # If the request is not POST, show a confirmation page
+    print(project_id, "project id")
     project = get_object_or_404(Project, id=project_id)
-    return render(request, 'admin/delete.html', {'project': project})
+    project_name = project.title  # Save name for feedback
+    project.delete()  # Delete the project
+    messages.success(request, f"Project '{project_name}' has been successfully deleted.")
+    return redirect('it_solution:projectlist')  # Replace with your project list view name
     
 
 
@@ -271,5 +272,10 @@ def editnewsview(request):
      return render(request, "admin/editnews.html")
 
 
-def deletenewsview(request):
-     return render(request, "admin/deletenews.html")
+def delete_news(request, news_id):
+    print(news_id, "news id")
+    news = get_object_or_404(LatestNews, id=news_id)
+    news_title = news.title  # Save name for feedback
+    news.delete()  # Delete the project
+    messages.success(request, f"News '{news_title}' has been successfully deleted.")
+    return redirect('it_solution:newslist')  # Replace with your project list view name

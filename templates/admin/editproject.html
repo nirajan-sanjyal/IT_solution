@@ -4,6 +4,73 @@
 {% block page_sub_title%} {%endblock page_sub_title%} 
 {% block admin_content%}
 
-<h1> Hellow my day </h1>
+<form method="POST" enctype="multipart/form-data" action="">
+    {% csrf_token %}
+    {{project.description|safe}}
+
+    <h1 style="text-align:center;">Edit Project</h1>
+
+    <div class="form-group row">
+        <label for="imageUpload" class="col-sm-2 col-form-label col-form-label-lg">Image</label>
+        <div class="col-sm-10">
+            <div class="custom-file">
+                <input 
+                    type="file" 
+                    class="custom-file-input" 
+                    id="imageUpload" 
+                    name="image" 
+                    onchange="showFileName()">
+                <label class="custom-file-label" for="imageUpload">{{project.image.url}}</label>
+            </div>
+        </div>
+    </div>
+    
+    
+      <div class="form-group row">
+        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Title</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="Enter the title", value={{ project.title}}>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="descriptionField" class="col-sm-2 col-form-label col-form-label-lg">Description</label>
+        <div class="col-sm-10">
+            <textarea 
+            class="form-control form-control-lg" 
+            id="descriptionField" 
+            name="description" 
+            placeholder="Enter the Description">{{ project.description|striptags }}</textarea>
+        
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Category</label>
+        <div class="col-sm-10">
+            <select name="category" class="form-control form-control-lg" id="colFormLabelLg">
+                <option value="" selected disabled>--------</option>
+                {% for category in categories %}
+                <option value="{{ category.id }}"{% if category.id|stringformat:"s" == project.category.id|stringformat:"s" %} selected{% endif %}>{{ category.title }}</option>
+                {% endfor %}
+    
+            </select>
+        </div>
+    </div>
+
+      <button type="submit" class="btn btn-primary">Edit Project </button>
+  </form>
 
 {% endblock admin_content%}
+
+{% block admin_scripts%}
+<script>
+    function showFileName() {
+        var input = document.getElementById('imageUpload');
+        var label = input.nextElementSibling; // Get the associated label
+        if (input.files && input.files[0]) {
+            label.textContent = input.files[0].name; // Set the file name
+        } else {
+            label.textContent = "No file chosen"; // Default text
+        }
+    }
+</script>
+{% endblock admin_scripts%}
