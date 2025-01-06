@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'it_solution',
+    'user',
     
     'ckeditor',
 ]
@@ -115,6 +116,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+AUTH_USER_MODEL= 'user.CustomUser'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
