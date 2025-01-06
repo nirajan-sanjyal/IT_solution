@@ -9,6 +9,8 @@ from django.utils.safestring import mark_safe
 from django import template
 from django.contrib import messages
 
+
+
 register = template.Library()
 
 # Create your views here.
@@ -154,7 +156,9 @@ def projectdetailsview(request):
 
 
 
-# for d
+
+
+# for admin
 
 def adminview(request):
     total_news = LatestNews.objects.all().count()  # Count all news entries
@@ -163,8 +167,6 @@ def adminview(request):
         'total_news': total_news,
         'total_projects': total_projects,
     })
-
-
 
 
 def addnewsview(request):
@@ -193,8 +195,6 @@ def addnewsview(request):
     
     # For GET requests, show the form
     return render(request, "admin/add_news.html")
-
-
 
 
 def newslistview(request):
@@ -247,8 +247,6 @@ def projectlistview(request):
     return render(request, "admin/project_list.html", context)
 
 
-
-
 def editprojectview(request, project_id):
     # Retrieve the project object or return 404 if not found
     project = get_object_or_404(Project, id=project_id)
@@ -290,8 +288,6 @@ def editprojectview(request, project_id):
         return render(request, "admin/editproject.html", context)
 
 
-
-
 def delete_project(request, project_id):
     print(project_id, "project id")
     project = get_object_or_404(Project, id=project_id)
@@ -300,10 +296,6 @@ def delete_project(request, project_id):
     messages.success(request, f"Project '{project_name}' has been successfully deleted.")
     return redirect('it_solution:projectlist')  # Replace with your project list view name
     
-
-
-
-
 
 def editnewsview(request, news_id):
     # Retrieve the news object or return 404 if not found

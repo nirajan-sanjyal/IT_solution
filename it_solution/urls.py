@@ -20,6 +20,12 @@ urlpatterns = [
     path("product/<int:pk>/", views.projectdetailsview, name="product-details"),
 
 
+    
+    
+
+
+
+
     path("admin-page/", views.adminview, name= "admin-page"),
     path("addnews/", views.addnewsview, name="addnews"),
     path("newslist/", views.newslistview, name= "newslist"),

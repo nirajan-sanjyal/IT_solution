@@ -23,6 +23,7 @@ from myproject import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",include("it_solution.urls")),
+    path("",include("user.urls")),
 ]
 
 if settings.DEBUG:
