@@ -157,7 +157,14 @@ def projectdetailsview(request):
 # for d
 
 def adminview(request):
-      return render(request,"admin/dashboard.html")
+    total_news = LatestNews.objects.all().count()  # Count all news entries
+    total_projects = Project.objects.all().count()  # Count all project entries
+    return render(request,"admin/dashboard.html", {
+        'total_news': total_news,
+        'total_projects': total_projects,
+    })
+
+
 
 
 def addnewsview(request):
@@ -243,14 +250,44 @@ def projectlistview(request):
 
 
 def editprojectview(request, project_id):
-    project = get_object_or_404(Project, id= project_id)
-     
-     
-    context={
-        'project': project,
-        'categories':Category.objects.all()
-     }
-    return render(request, "admin/editproject.html",context)
+    # Retrieve the project object or return 404 if not found
+    project = get_object_or_404(Project, id=project_id)
+
+    if request.method == 'POST':
+        # Retrieve updated data from the form
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        category_title = request.POST.get('category')
+        image = request.FILES.get('image')  # Handle new image if uploaded
+
+        # Print updated data (optional for debugging)
+        print(title, description, category_title, image)
+
+        # Find the category object
+        category = Category.objects.filter(id=category_title).first()
+
+        # Update the project if valid data is provided
+        if category and title and description:
+            project.title = title
+            project.description = description
+            project.category = category
+
+            # Update image only if a new one is uploaded
+            if image:
+                project.image = image
+
+            project.save()  # Save the changes to the database
+
+        return redirect('it_solution:projectlist')  # Redirect to the project list or success page
+    else:
+        # Fetch all categories for the dropdown
+        categories = Category.objects.all()
+
+        context = {
+            'project': project,
+            'categories': categories
+        }
+        return render(request, "admin/editproject.html", context)
 
 
 
@@ -268,8 +305,50 @@ def delete_project(request, project_id):
 
 
 
-def editnewsview(request):
-     return render(request, "admin/editnews.html")
+def editnewsview(request, news_id):
+    # Retrieve the news object or return 404 if not found
+    news = get_object_or_404(LatestNews, id=news_id)
+
+    if request.method == 'POST':
+        # Retrieve updated data from the form
+        title = request.POST.get('title')  # Matches the 'id' in HTML
+        content = request.POST.get('content')  # Correct field name
+        admin = request.POST.get('admin')  # Matches the 'id' in HTML
+        image = request.FILES.get('image')  # Matches the file input name
+        date = request.POST.get('date')  # Correctly retrieve the date field
+        print('nirajan')
+        print(content)
+
+        # Debug print for updated data
+        print(title, content, admin, image, date)
+
+        # Ensure all required fields are provided
+        if title and content and admin and date:
+            news.title = title
+            news.content = content
+            news.admin = admin
+            news.date = date
+
+            # Update image only if a new one is uploaded
+            if image:
+                news.image = image
+
+            news.save()  # Save the changes to the database
+            return redirect('it_solution:newslist')  # Redirect to the news list page
+
+        else:
+            # Return an error message if data is incomplete
+            context = {
+                'news': news,
+                'error_message': 'All fields are required. Please complete the form.'
+            }
+            return render(request, "admin/editnews.html", context)
+
+    # Handle GET requests to pre-fill the form with current news data
+    context = {
+        'news': news
+    }
+    return render(request, "admin/editnews.html", context)
 
 
 def delete_news(request, news_id):
