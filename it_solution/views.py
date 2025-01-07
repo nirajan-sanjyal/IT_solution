@@ -26,19 +26,13 @@ def homeview(request):
         news.content_length = len(plain_text)
         
 
-        meet_exports= MeetExports.objects.all()
-
-        explore_project= Project.objects.all()
-
-        
-        business_services= Services.objects.all()
 
     context = {
         "latest_news": latest_news,
-        "meet_exports": meet_exports,
+        "meet_exports": MeetExports.objects.all(),
         "logos": Technology.objects.all(),
-        "explore_project": explore_project,
-        "business_services": business_services
+        "explore_project": Project.objects.all(),
+        "business_services": Services.objects.all()
     }
 
     return render(request, "home/index.html", context)
@@ -350,3 +344,7 @@ def delete_news(request, news_id):
     news.delete()  # Delete the project
     messages.success(request, f"News '{news_title}' has been successfully deleted.")
     return redirect('it_solution:newslist')  # Replace with your project list view name
+
+
+
+

@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'it_solution',
-    'user',
+    'nirajan',
     
     'ckeditor',
 ]
@@ -116,7 +116,8 @@ USE_I18N = True
 
 USE_TZ = True
 
-AUTH_USER_MODEL= 'user.CustomUser'
+# AUTH_USER_MODEL= 'user.CustomUser'
+# AUTH_USER_MODEL = "auth.User"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
@@ -133,3 +134,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT ="media"
+
+
