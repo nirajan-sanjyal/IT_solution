@@ -12,7 +12,7 @@ def admin_login_view(request):
             user = form.save(commit=False)
             user.save()
             login(request, user)
-            return redirect('user:dashboard')  # Redirect to your desired page after registration
+            return redirect('nirajan:dashboard')  # Redirect to your desired page after registration
         else:
             print(form.errors)
             return render(request, 'admin/admin_login.html', {'form': form.errors})
@@ -22,15 +22,13 @@ def admin_login_view(request):
     return render(request, 'admin/admin_login.html', {'form': form})
 
 
-
-
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
 
         user = authenticate(request, username=username, password=password)
-        print(user)
+    
         if user is not None:
             login(request, user)
             print("successful")
@@ -43,6 +41,7 @@ def login_view(request):
 
 
 
+
 def dashboard_view(request):
     return render(request, 'admin/dashboard.html')
 
@@ -51,5 +50,5 @@ def dashboard_view(request):
 
 
 def logout_view(request):
-    logout(request)  # Logs out the user
+    logout(request)  # Logs out the 
     return redirect('/')  # Redirect to a desired page
