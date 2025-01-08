@@ -138,7 +138,7 @@
                                 <span class="icon-conversation"></span> 
                             </div>
                             <h3 class="services-one__title">
-                                <a href="it-consultancy.html">{{ services.tilte }} <br> Services</a>
+                                <a href="{% url 'it_solution:it-consultancy'%}">{{ services.tilte }} <br> Services</a>
                             </h3>
                             <p class="services-one__text">{{ services.description|richtext_truncatewords:10 }}</p>
                             <div class="services-one__arrow">

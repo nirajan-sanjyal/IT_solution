@@ -17,11 +17,9 @@ urlpatterns = [
     path("it-consultancy/", views.itconsultancy, name="it-consultancy"),
     path("custom-software/", views.customsoftware, name="custom-software"),
     path("news/<int:pk>/", views.newsdetailsview, name="news-details"),
-    path("product/<int:pk>/", views.projectdetailsview, name="product-details"),
+    path("project/<int:pk>/", views.projectdetailsview, name="project-details"),
 
 
-    
-    
 
 
 

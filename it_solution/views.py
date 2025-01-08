@@ -138,8 +138,8 @@ def newsdetailsview(request, pk):
       return render(request, "news-details.html", context)
 
 
-def projectdetailsview(request):
-      flow = get_object_or_404(Project, pk=pk)
+def projectdetailsview(request, pk):
+      flow = get_object_or_404(Project, id=pk)
       
       context = {
             'flow': flow,
@@ -157,7 +157,7 @@ def projectdetailsview(request):
 def adminview(request):
     total_news = LatestNews.objects.all().count()  # Count all news entries
     total_projects = Project.objects.all().count()  # Count all project entries
-    return render(request,"admin/dashboard.html", {
+    return render(request,"admin_pannel/dashboard.html", {
         'total_news': total_news,
         'total_projects': total_projects,
     })
@@ -188,7 +188,7 @@ def addnewsview(request):
             return redirect('it_solution:newslist')  # Redirect to a news list page or success page
     
     # For GET requests, show the form
-    return render(request, "admin/add_news.html")
+    return render(request, "admin_pannel/add_news.html")
 
 
 def newslistview(request):
@@ -197,7 +197,7 @@ def newslistview(request):
          
            'newslist' : newslist
      }
-    return render(request, "admin/news_list.html", context)
+    return render(request, "admin_pannel/news_list.html", context)
 
 def addprojectview(request):
      
@@ -229,7 +229,7 @@ def addprojectview(request):
         context ={
             'categories': categories
         }
-        return render(request, "admin/add_project.html", context)
+        return render(request, "admin_pannel/add_project.html", context)
 
 def projectlistview(request):
      
@@ -238,7 +238,7 @@ def projectlistview(request):
          
            'projectlist' : projectlist
      }
-    return render(request, "admin/project_list.html", context)
+    return render(request, "admin_pannel/project_list.html", context)
 
 
 def editprojectview(request, project_id):
@@ -279,7 +279,7 @@ def editprojectview(request, project_id):
             'project': project,
             'categories': categories
         }
-        return render(request, "admin/editproject.html", context)
+        return render(request, "admin_pannel/editproject.html", context)
 
 
 def delete_project(request, project_id):
@@ -328,13 +328,13 @@ def editnewsview(request, news_id):
                 'news': news,
                 'error_message': 'All fields are required. Please complete the form.'
             }
-            return render(request, "admin/editnews.html", context)
+            return render(request, "admin_pannel/editnews.html", context)
 
     # Handle GET requests to pre-fill the form with current news data
     context = {
         'news': news
     }
-    return render(request, "admin/editnews.html", context)
+    return render(request, "admin_pannel/editnews.html", context)
 
 
 def delete_news(request, news_id):
