@@ -15,11 +15,11 @@ def admin_login_view(request):
             return redirect('nirajan:dashboard')  # Redirect to your desired page after registration
         else:
             print(form.errors)
-            return render(request, 'admin/admin_login.html', {'form': form.errors})
+            return render(request, 'admin_pannel/admin_login.html', {'form': form.errors})
     else:
         form = UserCreationForm()
     
-    return render(request, 'admin/admin_login.html', {'form': form})
+    return render(request, 'admin_pannel/admin_login.html', {'form': form})
 
 
 def login_view(request):
@@ -32,18 +32,17 @@ def login_view(request):
         if user is not None:
             login(request, user)
             print("successful")
-            # return render(request, 'admin/dashboard.html')
-            return redirect('it_solution:admin-page')  # Redirect to your desired page after login
+            return redirect('it_solution:admin-page')  
         else:
             messages.error(request, 'Invalid username or password')
 
-    return render(request, 'admin/login.html')
+    return render(request, 'admin_pannel/login.html')
 
 
 
 
 def dashboard_view(request):
-    return render(request, 'admin/dashboard.html')
+    return render(request, 'admin_pannel/dashboard.html')
 
 
 

@@ -433,9 +433,9 @@
           <img src="{{ project.image.url }}" alt="" style= "height:250px; width:100%; "/>
         </div>
         <div class="project-one__content">
-          <p class="project-one__tagline">Cloud Services</p>
+          <p class="project-one__tagline">{{ project.title}}</p>
           <h2 class="project-one__title">
-            <a href="project-details.html">Smart Visions</a>
+            <a href="project-details.html">{{ project.description|richtext_truncatewords:10}}</a>
           </h2>
           <div class="project-one__arrow">
             <a href="project-details.html"

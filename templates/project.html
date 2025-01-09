@@ -128,20 +128,21 @@
             <div class="container">
                 <div class="row">
                     {% for project in explore_project %}
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="100ms">
+                   
+                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInLeft" data-wow-delay="100ms">
                         <!--Project One Single-->
 
                     <div class="project-one__single">
                         <div class="project-one__img">
-                        <img src="{{ project.image.url }}" alt="" />
+                        <img src="{{ project.image.url }}" alt="" style= "height:250px; width:100%; "/>
                         </div>
                         <div class="project-one__content">
-                        <p class="project-one__tagline">Cloud Services</p>
+                        <p class="project-one__tagline">{{ project.title }}</p>
                         <h2 class="project-one__title">
-                            <a href="project-details.html">Smart Visions</a>
+                            <a href="{% url 'it_solution:project-details' project.id %}">{{ project.description|richtext_truncatewords:10 }}</a>
                         </h2>
                         <div class="project-one__arrow">
-                            <a href="project-details.html"
+                            <a href="{% url 'it_solution:project-details' project.id %}"
                             ><span class="icon-right-arrow"></span
                             ></a>
                         </div>
@@ -180,7 +181,7 @@
                 </li>
                 <li>
                     <i class="fa fa-phone-alt"></i>
-                    <a href="tel:666-888-0000">666 888 0000</a>
+                    <a href="tel:666-888-0000">9802266777</a>
                 </li>
             </ul><!-- /.mobile-nav__contact -->
             <div class="mobile-nav__top">
