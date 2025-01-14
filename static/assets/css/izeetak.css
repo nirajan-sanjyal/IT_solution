@@ -660,29 +660,29 @@ canvas {
     z-index: -1;
 }
 
-.main-menu .main-menu__list > li.current > a:not(.home),
+.main-menu .main-menu__list > li.current,
 .main-menu .main-menu__list > li:hover > a,
-.stricky-header .main-menu__list > li.current > a:not(.home),
+.stricky-header .main-menu__list > li.current,
 .stricky-header .main-menu__list > li:hover > a {
     color: var(--thm-black);
     text-shadow: 0 0 1px currentColor;
 }
 
 
-.main-menu .main-menu__list>li.current>a::before,
+/* .main-menu .main-menu__list>li.current>a::before,
 .main-menu .main-menu__list>li:hover>a::before,
 .stricky-header .main-menu__list>li.current>a::before,
 .stricky-header .main-menu__list>li:hover>a::before {
     transform: scale(1) translateY(-50%);
-}
+} */
 
-.main-menu .main-menu__list>li.current>a::before {
+/* .main-menu .main-menu__list>li.current>a::before {
     background-color: var(--thm-extra);
-}
+} */
 
-.main-menu .main-menu__list>li:hover>a::before {
+/* .main-menu .main-menu__list>li:hover>a::before {
     background-color: var(--thm-extra);
-}
+} */
 
 .main-menu .main-menu__list li ul,
 .stricky-header .main-menu__list li ul {
