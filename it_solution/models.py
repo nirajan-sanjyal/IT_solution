@@ -68,6 +68,7 @@ class Project(models.Model):
     title= models.CharField(max_length=255)
     category=models.ForeignKey(Category,on_delete=models.CASCADE)
     description=RichTextField()
+    date= models.DateField(auto_now_add=True)
 
 
     def __str__(self):

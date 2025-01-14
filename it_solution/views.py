@@ -139,13 +139,16 @@ def newsdetailsview(request, pk):
 
 
 def projectdetailsview(request, pk):
-      flow = get_object_or_404(Project, id=pk)
+      project = get_object_or_404(Project, id=pk)
+      similar_projects = Project.objects.filter(category=project.category).exclude(id=project.id)[:3]
       
       context = {
-            'flow': flow,
+            'project': project,
             # 'comment': comments
+            'similar_projects': similar_projects
+
       }
-      return render(request, "project-details.html")
+      return render(request, "product-details.html", context)
 
 
 
