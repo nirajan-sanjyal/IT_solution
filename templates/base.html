@@ -70,7 +70,9 @@
                         ><i class="fa fa-bars"></i
                       ></a>
                       <ul class="main-menu__list">
-                        <li class="{% if request.path == "" %}current{% endif %}">
+                        <li class="d-none">
+                        </li>
+                        <li class="{% if request.path == "/" %}current{% endif %}">
                           <a href="{% url 'it_solution:home' %}">Home</a>
                         </li>
                         <li class="{% if request.path == '/about/' %}current{% endif %}">
